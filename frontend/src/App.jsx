@@ -8,7 +8,7 @@ const handleSubmit = async (e) => {
   e.preventDefault();
 
   const response = await fetch(
-    "http://localhost:5000/contact",
+    "http://https://portfolio-backend-cn1s.onrender.com/contact",
     {
       method: "POST",
       headers: {
