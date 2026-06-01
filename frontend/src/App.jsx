@@ -4,27 +4,12 @@ function App() {
   const [name, setName] = useState("");
 const [email, setEmail] = useState("");
 const [message, setMessage] = useState("");
-const handleSubmit = async (e) => {
+const handleSubmit = (e) => {
   e.preventDefault();
 
-  const response = await fetch(
-    "https://portfolio-backend-cn1s.onrender.com/contact",
-    {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        name,
-        email,
-        message,
-      }),
-    }
+  alert(
+    "Thank you for your message! This portfolio demo is currently under development."
   );
-
-  const data = await response.json();
-
-  alert(data.message);
 
   setName("");
   setEmail("");
@@ -233,7 +218,13 @@ const handleSubmit = async (e) => {
 
     <a href="https://github.com/AnishReddy-1010">GitHub</a>
 
-    <a href="www.linkedin.com/in/anish-reddy-193b79330">LinkedIn</a>
+    <a
+  href="https://www.linkedin.com/in/anish-reddy-193b79330"
+  target="_blank"
+  rel="noopener noreferrer"
+>
+  LinkedIn
+</a>
 
   </div>
 
