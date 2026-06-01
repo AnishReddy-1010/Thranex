@@ -3,7 +3,7 @@ require("dotenv").config();
 const express = require("express");
 const cors = require("cors");
 const mongoose = require("mongoose");
-
+const Contact = require("./models/contact");
 const app = express();
 
 app.use(cors());
@@ -16,15 +16,10 @@ mongoose
     console.log("MongoDB Connected Successfully 🚀");
   })
   .catch((err) => {
-    console.log("MongoDB Error:", err);
+    console.error("MongoDB Error:");
+    console.error(err);
   });
-const contactSchema = new mongoose.Schema({
-  name: String,
-  email: String,
-  message: String,
-});
 
-const Contact = mongoose.model("Contact", contactSchema);
 // Home Route
 app.get("/", (req, res) => {
   res.send("Backend is running successfully 🚀");
@@ -35,17 +30,17 @@ app.post("/contact", async (req, res) => {
   try {
     const { name, email, message } = req.body;
 
-    const newContact = new Contact({
+    const newMessage = new Contact({
       name,
       email,
       message,
     });
 
-    await newContact.save();
+    await newMessage.save();
 
     res.json({
       success: true,
-      message: "Message saved to MongoDB successfully!",
+      message: "Message saved successfully!",
     });
   } catch (error) {
     console.log(error);
@@ -56,7 +51,6 @@ app.post("/contact", async (req, res) => {
     });
   }
 });
-
 app.listen(5000, () => {
   console.log("Server running on port 5000");
 });
